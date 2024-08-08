@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        .stat-block { border: 1px solid #ccc; padding: 10px; margin-top: 20px; }
+        .stat-block h2 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <p><strong>Role:</strong> {{ role }}</p>
+    <p><strong>Appearance:</strong> {{ appearance }}</p>
+    <p><strong>Race:</strong> {{ race }}</p>
+    <p><strong>Class:</strong> {{ class }}</p>
+    <p><strong>Age:</strong> {{ age }}</p>
+    <p><strong>Personality:</strong> {{ personality }}</p>
+    <p><strong>Quirks:</strong> {{ quirks }}</p>
+    <div class="stat-block">
+        <h2>Stat Block</h2>
+        <p><strong>Abilities:</strong></p>
+        <ul>
+            {% for ability, score in stat_block.abilities.items() %}
+            <li>{{ ability.capitalize() }}: {{ score }}</li>
+            {% endfor %}
+        </ul>
+        <p><strong>Armor Class:</strong> {{ stat_block.armor_class }}</p>
+        <p><strong>Hit Points:</strong> {{ stat_block.hit_points }}</p>
+        <p><strong>Speed:</strong> {{ stat_block.speed }}</p>
+        <p><strong>Skills:</strong> {{ stat_block.skills }}</p>
+        <p><strong>Senses:</strong> {{ stat_block.senses }}</p>
+        <p><strong>Languages:</strong> {{ stat_block.languages }}</p>
+        <p><strong>Challenge Rating:</strong> {{ stat_block.challenge_rating }}</p>
+    </div>
+</body>
+</html>

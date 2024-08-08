@@ -1,0 +1,245 @@
+[
+    {
+        "name": "Arlyn the Veiled",
+        "role": "Responsible for the magical concealment of the hideout",
+        "appearance": "A middle-aged elf with piercing green eyes and long, silver hair. She wears dark robes adorned with arcane symbols.",
+        "race": "Elf",
+        "class": "Wizard",
+        "age": "145",
+        "personality": "Calm, analytical, and somewhat aloof. Arlyn is deeply committed to her magical craft and often loses herself in her studies. She values logic and efficiency and tends to keep her emotions in check.",
+        "quirks": "Frequently adjusts her robes or magical items, always carries a small notebook for jotting down arcane notes.",
+        "stat_block": {
+            "abilities": {
+                "strength": 10,
+                "dexterity": 14,
+                "constitution": 12,
+                "intelligence": 18,
+                "wisdom": 14,
+                "charisma": 12
+            },
+            "armor_class": 12,
+            "hit_points": 55,
+            "speed": "30 ft.",
+            "skills": "Arcana +7, Insight +5, Perception +5",
+            "senses": "Darkvision 60 ft., Passive Perception 15",
+            "languages": "Common, Elvish, Draconic",
+            "challenge_rating": 5
+        }
+    },
+    {
+        "name": "Brutus",
+        "role": "Provide physical security and handle any direct confrontations",
+        "appearance": "A hulking half-orc with a scarred face and bulging muscles",
+        "race": "Half-Orc",
+        "class": "Fighter",
+        "age": "35",
+        "personality": "Gruff, straightforward, and loyal. Brutus values strength and honor, and while he can be rough around the edges, he respects those who prove themselves in battle.",
+        "quirks": "Often sharpens his greataxe when bored, has a soft spot for small animals despite his tough exterior.",
+        "stat_block": {
+            "abilities": {
+                "strength": 18,
+                "dexterity": 12,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 11,
+                "charisma": 8
+            },
+            "armor_class": 16,
+            "hit_points": 65,
+            "speed": "30 ft.",
+            "skills": "Athletics +6, Intimidation +2",
+            "senses": "Darkvision 60 ft., Passive Perception 10",
+            "languages": "Common, Orc",
+            "challenge_rating": 3
+        }
+    },
+    {
+        "name": "Kira",
+        "role": "Provide physical security and handle any direct confrontations",
+        "appearance": "A tall, imposing human woman with short-cropped hair and a no-nonsense attitude",
+        "race": "Human",
+        "class": "Fighter",
+        "age": "28",
+        "personality": "Disciplined, assertive, and pragmatic. Kira believes in clear orders and decisive action. She is highly protective of her comrades and will not hesitate to confront those who threaten her team.",
+        "quirks": "Frequently inspects and maintains her weapons, has a habit of cracking her knuckles when thinking.",
+        "stat_block": {
+            "abilities": {
+                "strength": 17,
+                "dexterity": 14,
+                "constitution": 14,
+                "intelligence": 12,
+                "wisdom": 12,
+                "charisma": 10
+            },
+            "armor_class": 17,
+            "hit_points": 58,
+            "speed": "30 ft.",
+            "skills": "Athletics +6, Perception +4",
+            "senses": "Passive Perception 14",
+            "languages": "Common",
+            "challenge_rating": 3
+        }
+    },
+    {
+        "name": "Lira",
+        "role": "Provide stealth and sabotage capabilities, skilled in traps and quick strikes",
+        "appearance": "A lithe tiefling with nimble fingers and a mischievous smile",
+        "race": "Tiefling",
+        "class": "Rogue",
+        "age": "27",
+        "personality": "Witty, quick-witted, and somewhat mischievous. Lira enjoys the thrill of the heist and values cunning over brute strength. She is fiercely loyal to those she trusts but is always wary of betrayal.",
+        "quirks": "Has a habit of flicking her tail when excited or nervous, enjoys playing pranks on her comrades.",
+        "stat_block": {
+            "abilities": {
+                "strength": 10,
+                "dexterity": 18,
+                "constitution": 12,
+                "intelligence": 14,
+                "wisdom": 13,
+                "charisma": 16
+            },
+            "armor_class": 15,
+            "hit_points": 44,
+            "speed": "30 ft.",
+            "skills": "Acrobatics +7, Deception +6, Perception +4, Sleight of Hand +7, Stealth +7",
+            "senses": "Darkvision 60 ft., Passive Perception 14",
+            "languages": "Common, Infernal",
+            "challenge_rating": 3
+        }
+    },
+    {
+        "name": "Torren",
+        "role": "Provide stealth and sabotage capabilities, skilled in traps and quick strikes",
+        "appearance": "A wiry human with a calculating gaze and quick reflexes",
+        "race": "Human",
+        "class": "Rogue",
+        "age": "30",
+        "personality": "Cautious, strategic, and loyal. Torren values careful planning and precision in his actions. He is always thinking several steps ahead and prefers to avoid unnecessary risks.",
+        "quirks": "Often taps his fingers rhythmically when deep in thought, enjoys puzzles and riddles.",
+        "stat_block": {
+            "abilities": {
+                "strength": 11,
+                "dexterity": 16,
+                "constitution": 12,
+                "intelligence": 14,
+                "wisdom": 12,
+                "charisma": 14
+            },
+            "armor_class": 14,
+            "hit_points": 38,
+            "speed": "30 ft.",
+            "skills": "Acrobatics +6, Insight +4, Perception +4, Sleight of Hand +6, Stealth +6",
+            "senses": "Passive Perception 14",
+            "languages": "Common, Thieves' Cant",
+            "challenge_rating": 2
+        }
+    },
+    {
+        "name": "Rolan",
+        "role": "Reinforcements for the main entrance and interior security",
+        "appearance": "A stocky dwarf with a thick beard and a stern expression",
+        "race": "Dwarf",
+        "class": "Mercenary Guard",
+        "age": null,
+        "personality": null,
+        "quirks": null,
+        "stat_block": {
+            "abilities": {
+                "strength": 16,
+                "dexterity": 10,
+                "constitution": 16,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 8
+            },
+            "armor_class": 16,
+            "hit_points": 38,
+            "speed": "25 ft.",
+            "skills": "Athletics +5, Perception +3",
+            "senses": "Darkvision 60 ft., Passive Perception 13",
+            "languages": "Common, Dwarvish",
+            "challenge_rating": 2
+        }
+    },
+    {
+        "name": "Vira",
+        "role": "Reinforcements for the main entrance and interior security",
+        "appearance": "A lithe half-elf with sharp features and quick reflexes",
+        "race": "Half-Elf",
+        "class": "Mercenary Guard",
+        "age": "32",
+        "personality": "Agile, cunning, and resourceful. Vira values freedom and independence but understands the importance of working within a team. She is quick to adapt to new situations and is always looking for an angle.",
+        "quirks": "Often twirls her dagger absentmindedly, has a knack for finding hidden items or passages.",
+        "stat_block": {
+            "abilities": {
+                "strength": 12,
+                "dexterity": 16,
+                "constitution": 12,
+                "intelligence": 10,
+                "wisdom": 12,
+                "charisma": 14
+            },
+            "armor_class": 15,
+            "hit_points": 35,
+            "speed": "30 ft.",
+            "skills": "Acrobatics +5, Stealth +5, Perception +3",
+            "senses": "Darkvision 60 ft., Passive Perception 13",
+            "languages": "Common, Elvish",
+            "challenge_rating": 2
+        }
+    },
+    {
+        "name": "Rynn",
+        "role": "Expert infiltrators and traps specialists",
+        "appearance": "A wiry gnome with nimble fingers and a mischievous grin",
+        "race": "Gnome",
+        "class": "Thieves Guild Rogue",
+        "age": "45",
+        "personality": "Inquisitive, energetic, and clever. Rynn loves discovering new things and is always on the lookout for hidden knowledge or opportunities. He is quick to make friends but cautious about revealing too much.",
+        "quirks": "Constantly fiddles with small gadgets or trinkets, has a habit of talking to himself when working on a problem.",
+        "stat_block": {
+            "abilities": {
+                "strength": 10,
+                "dexterity": 16,
+                "constitution": 14,
+                "intelligence": 12,
+                "wisdom": 12,
+                "charisma": 14
+            },
+            "armor_class": 14,
+            "hit_points": 27,
+            "speed": "25 ft.",
+            "skills": "Acrobatics +5, Sleight of Hand +5, Stealth +5, Perception +3",
+            "senses": "Darkvision 60 ft., Passive Perception 13",
+            "languages": "Common, Gnomish",
+            "challenge_rating": 2
+        }
+    },
+    {
+        "name": "Zara",
+        "role": "Expert infiltrators and traps specialists",
+        "appearance": "A dark-haired human with a calculating gaze and quick reflexes",
+        "race": "Human",
+        "class": "Thieves Guild Rogue",
+        "age": null,
+        "personality": "Cautious, strategic, and loyal. Zara values careful planning and precision in her actions. She is always thinking several steps ahead and prefers to avoid unnecessary risks.",
+        "quirks": "Often taps her fingers rhythmically when deep in thought, enjoys puzzles and riddles.",
+        "stat_block": {
+            "abilities": {
+                "strength": 11,
+                "dexterity": 16,
+                "constitution": 12,
+                "intelligence": 12,
+                "wisdom": 14,
+                "charisma": 14
+            },
+            "armor_class": 14,
+            "hit_points": 32,
+            "speed": "30 ft.",
+            "skills": "Acrobatics +5, Insight +4, Perception +4, Stealth +5",
+            "senses": "Passive Perception 14",
+            "languages": "Common, Thieves' Cant",
+            "challenge_rating": 2
+        }
+    }
+]
