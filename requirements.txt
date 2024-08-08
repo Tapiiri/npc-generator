@@ -1,3 +1,5 @@
 weasyprint
 jinja2
 python-dotenv
+tqdm-loggable
+argparse

@@ -1,32 +1,33 @@
-
 import json
 import os
 from jinja2 import Template
 from weasyprint import HTML
 import logging
 import dotenv
-
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+import argparse
+from tqdm_loggable.auto import tqdm
+from tqdm_loggable.tqdm_logging import tqdm_logging
 
 # Determine base directory
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
+# Load environment variables
 dotenv.load_dotenv(os.path.join(base_dir, '.env'))
 
-NPC_DATA_FILE = os.getenv('NPC_DATA_FILE')
-HTML_TEMPLATE_FILE = os.getenv('HTML_TEMPLATE_FILE')
-OUTPUT_DIRECTORY = os.getenv('OUTPUT_DIRECTORY')
+DEFAULT_ERROR_LEVEL = logging.ERROR
 
-# Load configuration
-config = {
-    "npc_data_file": os.path.join(base_dir, NPC_DATA_FILE),
-    "html_template_file": os.path.join(base_dir, HTML_TEMPLATE_FILE),
-    "output_directory": os.path.join(base_dir, OUTPUT_DIRECTORY)
-}
+# Define a custom logging level for silent mode
+SILENT = 60
+logging.addLevelName(SILENT, 'SILENT')
 
-# Ensure output directory exists
-os.makedirs(config['output_directory'], exist_ok=True)
+def logging_name_to_int_level(level_name):
+    return getattr(logging, level_name.upper(), DEFAULT_ERROR_LEVEL)
+    
+
+def configure_logging(level_name):
+    level = logging_name_to_int_level(level_name)
+    logging.basicConfig(level=level, format='%(asctime)s - %(levelname)s - %(message)s')
+    tqdm_logging.set_level(level)
 
 def load_json(file_path):
     try:
@@ -70,6 +71,28 @@ def generate_npc_pdf(npc, template_content, output_dir):
         return None
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Generate NPC PDFs from JSON data and an HTML template.')
+    parser.add_argument('--npc_data_file', type=str, help='Path to the NPC data JSON file')
+    parser.add_argument('--html_template_file', type=str, help='Path to the HTML template file')
+    parser.add_argument('--output_directory', type=str, help='Directory to output the generated PDF files')
+    parser.add_argument('--logging_level', type=str, choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL', 'SILENT'], help='Set the logging level')
+    args = parser.parse_args()
+
+    # Load configuration
+    config = {
+        "npc_data_file": args.npc_data_file or os.path.join(base_dir, os.getenv('NPC_DATA_FILE')),
+        "html_template_file": args.html_template_file or os.path.join(base_dir, os.getenv('HTML_TEMPLATE_FILE')),
+        "output_directory": args.output_directory or os.path.join(base_dir, os.getenv('OUTPUT_DIRECTORY')),
+        "logging_level": args.logging_level or os.getenv('LOGGING_LEVEL', 'ERROR')
+    }
+
+    # Configure logging
+    configure_logging(config['logging_level'])
+
+    # Ensure output directory exists
+    os.makedirs(config['output_directory'], exist_ok=True)
+
     # Check if the required files exist
     if not os.path.isfile(config['npc_data_file']):
         logging.error(f"NPC data file not found: {config['npc_data_file']}")
@@ -94,7 +117,7 @@ def main():
         return
     
     pdf_files = []
-    for npc in npc_data:
+    for npc in (tqdm(npc_data, desc="Generating PDFs", unit="npc") if (args.logging_level or os.getenv('LOGGING_LEVEL', 'INFO')) != 'SILENT' else npc_data):
         pdf_file = generate_npc_pdf(npc, template_content, config['output_directory'])
         if pdf_file:
             pdf_files.append(pdf_file)
