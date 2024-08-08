@@ -4,7 +4,7 @@ import os
 from jinja2 import Template
 from weasyprint import HTML
 import logging
-import sys
+import dotenv
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -12,11 +12,17 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Determine base directory
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
+dotenv.load_dotenv(os.path.join(base_dir, '.env'))
+
+NPC_DATA_FILE = os.getenv('NPC_DATA_FILE')
+HTML_TEMPLATE_FILE = os.getenv('HTML_TEMPLATE_FILE')
+OUTPUT_DIRECTORY = os.getenv('OUTPUT_DIRECTORY')
+
 # Load configuration
 config = {
-    "npc_data_file": os.path.join(base_dir, 'npcs_updated.json'),
-    "html_template_file": os.path.join(base_dir, 'npc_template.html'),
-    "output_directory": os.path.join(base_dir, 'output')
+    "npc_data_file": os.path.join(base_dir, NPC_DATA_FILE),
+    "html_template_file": os.path.join(base_dir, HTML_TEMPLATE_FILE),
+    "output_directory": os.path.join(base_dir, OUTPUT_DIRECTORY)
 }
 
 # Ensure output directory exists
