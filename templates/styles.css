@@ -65,3 +65,14 @@ ul ul {
 .attributes-details {
     flex: 1;
 }
+
+.icon {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.missing-icon {
+    color: red;
+    font-style: italic;
+}

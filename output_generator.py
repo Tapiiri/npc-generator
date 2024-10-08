@@ -40,7 +40,7 @@ class OutputGenerator:
         pdf_file_path = os.path.join(self.output_directory, f"{name}.pdf")
 
         # Set base_url to the project root directory
-        base_url = self.template_renderer.template_dir7
+        base_url = self.template_renderer.template_dir
 
         try:
             with open(html_file_path, "w", encoding="utf-8") as file:

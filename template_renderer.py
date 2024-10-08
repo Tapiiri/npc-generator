@@ -15,7 +15,24 @@ class TemplateRenderer:
         self.env.filters['format_modifier'] = self.format_modifier
         self.env.filters['format_date'] = self.format_date
         self.env.filters['humanize'] = self.humanize
-        # 'join' filter is built-in, but ensure your Jinja2 version supports it
+        self.env.filters['replace_icons'] = self.replace_icons
+
+    def replace_icons(self, text, icons):
+        import re
+        from markupsafe import Markup
+
+        def replace_match(match):
+            placeholder = match.group(0)
+            icon_path = icons.get(placeholder)
+            if icon_path:
+                return f'<img src="{icon_path}" alt="{placeholder}" class="icon">'
+            else:
+                return f'<span class="missing-icon">{placeholder}</span>'
+
+        # Use regex to find placeholders
+        pattern = re.compile(r'\{[^}]+\}')
+        result = pattern.sub(replace_match, text)
+        return Markup(result)  # Mark as safe HTML
 
     @staticmethod
     def format_modifier(value):

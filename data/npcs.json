@@ -10,6 +10,7 @@
       "name": "Arlyn the Veiled",
       "role": "Master of Magical Concealment",
       "portrait": "images/Arlyn_Portrait.webp",
+      "description": "Arlyn wields the power of {fire_icon} and {ice_icon} to defend the realm.",
       "appearance": "A middle-aged elf with piercing green eyes and long, silver hair. She wears dark robes adorned with arcane symbols.",
       "race": "Elf",
       "class": "Wizard",
@@ -98,6 +99,10 @@
       "secrets": "Has a hidden agenda to find the lost Tome of Mirrors.",
       "allies": ["Council of Mages", "Shadow Enclave"],
       "enemies": ["Order of the Silver Flame", "The Whispering Tyrant"]
+    },
+    "icons": {
+      "{fire_icon}": "icons/fire.png",
+      "{ice_icon}": "icons/ice.png"
     },
     "template_instructions": {
       "layout": "detailed",

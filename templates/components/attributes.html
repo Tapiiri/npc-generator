@@ -9,6 +9,9 @@
         {% endif %}
         <div class="attributes-details">
             <h1>{{ attributes.name }}</h1>
+            {% if attributes.description %}
+                <p><strong>Description:</strong> {{ attributes.description | replace_icons(icons) }}</p>
+            {% endif %}
             {% if attributes.role %}
                 <p><strong>{{ template_instructions.field_formatting.role.display_name or "Role" }}:</strong> {{ attributes.role }}</p>
             {% endif %}

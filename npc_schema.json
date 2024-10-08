@@ -91,6 +91,13 @@
             "type": "object",
             "additionalProperties": true
           },
+          "icons": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
           "template_instructions": {
             "type": "object",
             "properties": {
