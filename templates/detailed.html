@@ -1,0 +1,20 @@
+<!-- templates/detailed.html -->
+{% extends "base.html" %}
+
+{% block title %}{{ attributes.name }} - Detailed NPC Sheet{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for section in template_instructions.sections %}
+            {% if section == "attributes" and attributes %}
+                {% include "components/attributes.html" %}
+            {% elif section == "stat_blocks" and stat_blocks %}
+                {% for stat_block in stat_blocks %}
+                    {% include "components/stat_block.html" %}
+                {% endfor %}
+            {% elif section == "custom_fields" and custom_fields %}
+                {% include "components/custom_fields.html" %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

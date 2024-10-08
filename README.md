@@ -1,78 +1,374 @@
-# NPC PDF Generator
+# NPC Generator
 
+_ReadMe Generated with ChatGPT-o1 - except AI funkiness!_
 ## Overview
 
-This project generates PDF files for NPCs (Non-Player Characters) based on JSON data and an HTML template. It uses Jinja2 for templating and WeasyPrint for PDF generation.
+The **NPC Generator** is a Python-based tool designed to create detailed PDF character sheets for Non-Player Characters (NPCs) in role-playing games like Dungeons & Dragons. It leverages a flexible data model defined in JSON, modular HTML templates with Jinja2 templating, and WeasyPrint for PDF generation. The system is built to be extensible, allowing for easy customization of data fields, templates, and layouts.
 
-## Files
+## Features
 
-- `npc_pdf_generator.py`: The main script to generate PDFs.
-- `npcs_updated.json`: Sample JSON data for NPCs.
-- `npc_template.html`: HTML template for rendering NPC data.
-- `output/`: Directory where the generated PDF files will be saved.
+- **Flexible Data Model**: Supports a wide range of NPC attributes, stat blocks, custom fields, and metadata, defined in a JSON schema.
+- **Modular Templates**: Uses component-based HTML templates that can be customized and extended.
+- **Dynamic Rendering**: Generates NPC sheets based on data and template instructions, allowing for different layouts and sections.
+- **Extensibility**: Easily add new templates, data fields, or output formats without significant code changes.
+- **Command-Line Interface**: Provides a CLI for generating PDFs with options to specify data files, output directories, and logging levels.
+- **Data Validation**: Validates NPC data against a JSON schema to ensure data integrity.
+
+## Table of Contents
+
+- [Directory Structure](#directory-structure)
+- [Dependencies](#dependencies)
+- [Setup](#setup)
+- [Usage](#usage)
+  - [Command-Line Arguments](#command-line-arguments)
+  - [Environment Variables](#environment-variables)
+- [Data Model](#data-model)
+  - [Sample NPC Data](#sample-npc-data)
+- [Templates](#templates)
+  - [Customizing Templates](#customizing-templates)
+- [Directory Structure](#directory-structure)
+- [Customization](#customization)
+- [License](#license)
+- [Contributing](#contributing)
+
+## Directory Structure
+
+```
+npc_generator/
+├── main.py
+├── config.py
+├── logger.py
+├── data_loader.py
+├── template_renderer.py
+├── output_generator.py
+├── validators.py
+├── npc_schema.json
+├── requirements.txt
+├── .env
+├── templates/
+│   ├── base.html
+│   ├── detailed.html
+│   ├── components/
+│   │   ├── attributes.html
+│   │   ├── stat_block.html
+│   │   ├── custom_fields.html
+│   │   ├── metadata.html
+│   │   ├── macros.html
+│   └── styles.css
+├── data/
+│   └── npc_data.json
+└── output/
+```
+
+- **`main.py`**: Entry point of the application.
+- **`config.py`**: Handles configuration loading and management.
+- **`logger.py`**: Sets up logging.
+- **`data_loader.py`**: Loads and validates NPC data.
+- **`template_renderer.py`**: Handles template rendering.
+- **`output_generator.py`**: Manages output generation (HTML, PDF).
+- **`validators.py`**: Contains validation functions and schema loading.
+- **`npc_schema.json`**: JSON schema for validating NPC data.
+- **`templates/`**: Contains base templates and components.
+- **`data/`**: Directory for NPC data files.
+- **`output/`**: Directory where generated files are saved.
 
 ## Dependencies
 
-- Jinja2
-- WeasyPrint
-- Python-dotenv
-- Tqdm
+- **Python 3.x**
+- **Jinja2**: Templating engine.
+- **WeasyPrint**: For generating PDFs from HTML and CSS.
+- **jsonschema**: For validating JSON data against a schema.
+- **python-dotenv**: For loading environment variables from a `.env` file.
+- **tqdm** (optional): For progress bars in the CLI.
 
-## Setup
-
-1. Ensure you have Python 3.x installed.
-2. Install the required Python packages:
+Install dependencies using:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Copy `.env.example` file and rename the copy to `.env`.
+**System Dependencies for WeasyPrint**:
 
-4. Reconfigure the file locations and other settings in `.env` as necessary.
+WeasyPrint may require additional system libraries:
+
+- **Cairo**
+- **Pango**
+- **GDK-PixBuf**
+- **Libffi**
+
+On Ubuntu/Debian:
+
+```bash
+sudo apt-get install libpango1.0-0 libpangocairo-1.0-0 libcairo2 libcairo2-dev libffi-dev shared-mime-info
+```
+
+Refer to the [WeasyPrint documentation](https://weasyprint.readthedocs.io/en/latest/install.html#linux) for detailed installation instructions.
+
+## Setup
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/yourusername/npc_generator.git
+   cd npc_generator
+   ```
+
+2. **Create a Virtual Environment** (optional but recommended):
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install Python Dependencies**:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Create a `.env` File**:
+
+   Copy the example `.env` file and modify it as needed.
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   **`.env` File Contents**:
+
+   ```ini
+   # .env
+
+   # Path to your NPC data JSON file
+   NPC_DATA_FILE=data/npc_data.json
+
+   # Directory to output the generated files
+   OUTPUT_DIRECTORY=output
+
+   # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+   LOGGING_LEVEL=INFO
+   ```
+
+5. **Ensure the Directory Structure**:
+
+   Make sure the `data/` directory contains your NPC data JSON file (`npc_data.json`), and the `templates/` directory contains all the necessary template files.
 
 ## Usage
 
-1. Keep the NPC JSON data file (`npcs_updated.json`) and the HTML template file (`npc_template.html`) in the location defined in `.env`. For sample use, the locations are preconfigured.
-
-2. Run the script:
+Run the main script to generate NPC PDFs:
 
 ```bash
-python npc_pdf_generator.py
+python main.py
 ```
 
-3. The generated PDF files will be saved in the `output/` directory (or the folder you reconfigured in the `.env` file).
+The generated HTML and PDF files will be saved in the `output/` directory (or the directory specified in your `.env` file).
 
-### Command Line Arguments
+### Command-Line Arguments
 
-The script supports command line arguments to override the `.env` file values:
+The script supports command-line arguments to override configurations:
 
 - `--npc_data_file`: Path to the NPC data JSON file.
-- `--html_template_file`: Path to the HTML template file.
-- `--output_directory`: Directory to output the generated PDF files.
-- `--logging_level`: Set the logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`, `SILENT`).
+- `--output_directory`: Directory to output the generated files.
+- `--logging_level`: Set the logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`).
 
-Example:
+**Example**:
 
 ```bash
-python npc_pdf_generator.py --npc_data_file="path/to/npcs_updated.json" --html_template_file="path/to/npc_template.html" --output_directory="path/to/output" --logging_level="DEBUG"
+python main.py --npc_data_file="data/my_npcs.json" --output_directory="output" --logging_level="DEBUG"
 ```
 
 ### Environment Variables
 
-You can also configure the script using environment variables by setting them in the `.env` file:
+You can also configure the script using environment variables set in the `.env` file:
 
 - `NPC_DATA_FILE`: Path to the NPC data JSON file.
-- `HTML_TEMPLATE_FILE`: Path to the HTML template file.
-- `OUTPUT_DIRECTORY`: Directory to output the generated PDF files.
-- `LOGGING_LEVEL`: Set the logging level (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`, `SILENT`).
+- `OUTPUT_DIRECTORY`: Directory to output the generated files.
+- `LOGGING_LEVEL`: Set the logging level.
 
-## Example
+## Data Model
 
-The sample JSON data includes some sample NPCs. The script will generate PDFs for them. [An example is displayed here.](Aria%20Windrunned.pdf)
+The NPC Generator uses a flexible JSON schema to define NPC data. This allows for customizable and extensible NPC character sheets.
+
+### Key Components
+
+- **metadata**: Contains meta-information about the NPC data.
+- **attributes**: Core descriptive data about the NPC.
+- **stat_blocks**: Statistical data, which can include multiple stat blocks.
+- **custom_fields**: User-defined data for additional customization.
+- **template_instructions**: Guides how the data should be rendered.
+
+### Sample NPC Data
+
+Here's an example of NPC data in `data/npc_data.json`:
+
+```json
+[
+  {
+    "metadata": {
+      "version": "1.0",
+      "author": "Dungeon Master",
+      "created_at": "2023-10-05T12:34:56Z",
+      "notes": "Key NPC for the upcoming quest arc."
+    },
+    "attributes": {
+      "name": "Arlyn the Veiled",
+      "role": "Master of Magical Concealment",
+      "appearance": "A middle-aged elf with piercing green eyes and long, silver hair...",
+      "race": "Elf",
+      "class": "Wizard",
+      "age": 145,
+      "personality": "Calm, analytical, and somewhat aloof...",
+      "quirks": "Frequently adjusts her robes...",
+      "alignment": "Neutral Good",
+      "background": "Arlyn has been safeguarding the hideout...",
+      "additional_info": {
+        "affiliations": ["Arcane Circle", "Guardians of the Veil"],
+        "notable_items": ["Veil of Shadows", "Amulet of the Hidden Path"],
+        "family": {
+          "mother": "Elara the Wise",
+          "father": "Thalion the Swift",
+          "siblings": ["Eldrin", "Lyra"]
+        }
+      }
+    },
+    "stat_blocks": [
+      {
+        "title": "Primary Stat Block",
+        "abilities": {
+          "strength": 10,
+          "dexterity": 14,
+          "constitution": 12,
+          "intelligence": 18,
+          "wisdom": 14,
+          "charisma": 12
+        },
+        "armor_class": 12,
+        "hit_points": 55,
+        "speed": "30 ft.",
+        "skills": ["Arcana +9", "Insight +7", "Perception +7"],
+        "senses": "Darkvision 60 ft., Passive Perception 17",
+        "languages": ["Common", "Elvish", "Draconic", "Sylvan"],
+        "challenge_rating": 7,
+        "special_abilities": [
+          {
+            "name": "Spellcasting",
+            "description": "Arlyn is a 12th-level spellcaster...",
+            "metadata": {
+              "spell_list": ["Fireball", "Invisibility", "Counterspell"]
+            }
+          },
+          {
+            "name": "Arcane Ward",
+            "description": "Arlyn can create a magical ward that absorbs damage...",
+            "metadata": {
+              "activation": "Reaction",
+              "duration": "Until depleted"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Alternate Form",
+        "abilities": {
+          "strength": 12,
+          "dexterity": 16,
+          "constitution": 14,
+          "intelligence": 18,
+          "wisdom": 14,
+          "charisma": 14
+        },
+        "armor_class": 14,
+        "hit_points": 65,
+        "speed": "40 ft.",
+        "skills": ["Stealth +9", "Arcana +9"],
+        "senses": "Darkvision 60 ft., Passive Perception 17",
+        "languages": ["Common", "Elvish"],
+        "challenge_rating": 8,
+        "special_abilities": [
+          {
+            "name": "Shadow Step",
+            "description": "Arlyn can teleport between shadows...",
+            "metadata": {
+              "range": "60 ft.",
+              "activation": "Bonus Action"
+            }
+          }
+        ]
+      }
+    ],
+    "custom_fields": {
+      "motivation": "Protect the hideout and further her understanding of illusion magic.",
+      "secrets": "Has a hidden agenda to find the lost Tome of Mirrors.",
+      "allies": ["Council of Mages", "Shadow Enclave"],
+      "enemies": ["Order of the Silver Flame", "The Whispering Tyrant"]
+    },
+    "template_instructions": {
+      "layout": "detailed",
+      "sections": ["attributes", "stat_blocks", "custom_fields", "metadata"],
+      "field_formatting": {
+        "name": { "display_name": "NPC Name", "location": "header" },
+        "role": { "display_name": "Role/Title", "location": "header" },
+        "abilities": { "format": "table", "location": "stat_block" },
+        "special_abilities": { "format": "accordion", "location": "stat_block" },
+        "metadata": { "display": true }
+      }
+    }
+  }
+]
+```
+
+## Templates
+
+The NPC Generator uses Jinja2 templates located in the `templates/` directory. The templates are modular and component-based, making it easy to customize the output.
+
+### Template Files
+
+- **`base.html`**: The base template that defines the overall structure.
+- **`detailed.html`**: Extends `base.html` and includes components based on `template_instructions`.
+- **Components (`templates/components/`)**:
+  - **`attributes.html`**: Renders the NPC's attributes.
+  - **`stat_block.html`**: Renders stat blocks.
+  - **`custom_fields.html`**: Renders custom fields.
+  - **`metadata.html`**: Renders metadata.
+  - **`macros.html`**: Contains reusable macros for rendering.
+
+### Customizing Templates
+
+You can customize the templates to change the appearance and layout of the NPC sheets.
+
+- **Modify Existing Templates**: Edit the HTML and CSS to adjust styles and structure.
+- **Add New Templates**: Create new templates or components and update the `template_instructions` in your NPC data to use them.
+- **Use Template Instructions**: Control which sections are included and how fields are formatted by adjusting `template_instructions` in your NPC data.
+
+**Example**:
+
+```json
+"template_instructions": {
+  "layout": "custom_layout",
+  "sections": ["attributes", "stat_blocks", "custom_fields"],
+  "field_formatting": {
+    "abilities": { "format": "grid", "location": "sidebar" },
+    "special_abilities": { "format": "list", "location": "main" }
+  }
+}
+```
+
+## Customization
+
+### Adding New Fields
+
+To add new fields to your NPC data:
+
+1. **Update the JSON Data**: Add the new field to your NPC data in `npc_data.json`.
+2. **Modify the Templates**: Edit the relevant template to include the new field.
+3. **Update the Schema (Optional)**: If you want the new field to be validated, add it to `npc_schema.json`.
+
+### Extending Functionality
+
+- **Custom Filters**: Add custom filters in `template_renderer.py` and use them in templates.
+- **Additional Output Formats**: Modify `output_generator.py` to support other formats like images or text files.
+- **Plugin Architecture**: Implement a plugin system to load custom components or processors.
 
 ## License
 
-MIT. 
-
-Enjoy!
+This project is licensed under the MIT License.

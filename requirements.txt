@@ -1,5 +1,5 @@
+Jinja2
 weasyprint
-jinja2
+jsonschema
 python-dotenv
-tqdm-loggable
-argparse
+tqdm

@@ -1,0 +1,113 @@
+[
+  {
+    "metadata": {
+      "version": "1.0",
+      "author": "Dungeon Master",
+      "created_at": "2023-10-05T12:34:56Z",
+      "notes": "Key NPC for the upcoming quest arc."
+    },
+    "attributes": {
+      "name": "Arlyn the Veiled",
+      "role": "Master of Magical Concealment",
+      "appearance": "A middle-aged elf with piercing green eyes and long, silver hair. She wears dark robes adorned with arcane symbols.",
+      "race": "Elf",
+      "class": "Wizard",
+      "age": 145,
+      "personality": "Calm, analytical, and somewhat aloof. Arlyn is deeply committed to her magical craft and often loses herself in her studies.",
+      "quirks": "Frequently adjusts her robes or magical items; always carries a small notebook for jotting down arcane notes.",
+      "alignment": "Neutral Good",
+      "background": "Arlyn has been safeguarding the hideout with her powerful illusions for decades.",
+      "additional_info": {
+        "affiliations": ["Arcane Circle", "Guardians of the Veil"],
+        "notable_items": ["Veil of Shadows", "Amulet of the Hidden Path"],
+        "family": {
+          "mother": "Elara the Wise",
+          "father": "Thalion the Swift",
+          "siblings": ["Eldrin", "Lyra"]
+        }
+      }
+    },
+    "stat_blocks": [
+      {
+        "title": "Primary Stat Block",
+        "abilities": {
+          "strength": 10,
+          "dexterity": 14,
+          "constitution": 12,
+          "intelligence": 18,
+          "wisdom": 14,
+          "charisma": 12
+        },
+        "armor_class": 12,
+        "hit_points": 55,
+        "speed": "30 ft.",
+        "skills": ["Arcana +9", "Insight +7", "Perception +7"],
+        "senses": "Darkvision 60 ft., Passive Perception 17",
+        "languages": ["Common", "Elvish", "Draconic", "Sylvan"],
+        "challenge_rating": 7,
+        "special_abilities": [
+          {
+            "name": "Spellcasting",
+            "description": "Arlyn is a 12th-level spellcaster. Her spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). She has the following wizard spells prepared...",
+            "metadata": {
+              "spell_list": ["Fireball", "Invisibility", "Counterspell"]
+            }
+          },
+          {
+            "name": "Arcane Ward",
+            "description": "Arlyn can create a magical ward that absorbs damage...",
+            "metadata": {
+              "activation": "Reaction",
+              "duration": "Until depleted"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Alternate Form",
+        "abilities": {
+          "strength": 12,
+          "dexterity": 16,
+          "constitution": 14,
+          "intelligence": 18,
+          "wisdom": 14,
+          "charisma": 14
+        },
+        "armor_class": 14,
+        "hit_points": 65,
+        "speed": "40 ft.",
+        "skills": ["Stealth +9", "Arcana +9"],
+        "senses": "Darkvision 60 ft., Passive Perception 17",
+        "languages": ["Common", "Elvish"],
+        "challenge_rating": 8,
+        "special_abilities": [
+          {
+            "name": "Shadow Step",
+            "description": "Arlyn can teleport between shadows...",
+            "metadata": {
+              "range": "60 ft.",
+              "activation": "Bonus Action"
+            }
+          }
+        ]
+      }
+    ],
+    "custom_fields": {
+      "motivation": "Protect the hideout and further her understanding of illusion magic.",
+      "secrets": "Has a hidden agenda to find the lost Tome of Mirrors.",
+      "allies": ["Council of Mages", "Shadow Enclave"],
+      "enemies": ["Order of the Silver Flame", "The Whispering Tyrant"]
+    },
+    "template_instructions": {
+      "layout": "detailed",
+      "sections": ["attributes", "stat_blocks", "custom_fields", "metadata"],
+      "field_formatting": {
+        "name": { "display_name": "NPC Name", "location": "header" },
+        "role": { "display_name": "Role/Title", "location": "header" },
+        "abilities": { "format": "table", "location": "stat_block" },
+        "special_abilities": { "format": "accordion", "location": "stat_block" },
+        "metadata": { "display": true }
+      }
+    }
+  }
+]

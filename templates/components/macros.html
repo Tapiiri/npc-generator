@@ -1,0 +1,28 @@
+<!-- templates/components/macros.html -->
+
+{% macro render_stat(name, value) %}
+    <li><strong>{{ name }}:</strong> {{ value }}</li>
+{% endmacro %}
+
+{% macro render_ability(ability_name, ability_value) %}
+    <li><strong>{{ ability_name|capitalize }}:</strong> {{ ability_value|format_modifier }}</li>
+{% endmacro %}
+
+{% macro render_special_ability(ability) %}
+    <div class="special-ability">
+        <strong>{{ ability.name }}.</strong> {{ ability.description }}
+        {% if ability.metadata %}
+            <ul>
+                {% for key, value in ability.metadata.items() %}
+                    <li><em>{{ key|humanize }}:</em>
+                        {% if value is iterable and value is not string %}
+                            {{ value | join(', ') }}
+                        {% else %}
+                            {{ value }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endmacro %}

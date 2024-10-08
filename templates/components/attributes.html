@@ -1,0 +1,12 @@
+<!-- templates/components/attributes.html -->
+
+<div class="attributes-section">
+    <h1>{{ attributes.name }}</h1>
+    {% if attributes.role %}
+        <p><strong>{{ template_instructions.field_formatting.role.display_name or "Role" }}:</strong> {{ attributes.role }}</p>
+    {% endif %}
+    {% if attributes.appearance %}
+        <p><strong>Appearance:</strong> {{ attributes.appearance }}</p>
+    {% endif %}
+    <!-- Add other attributes as needed -->
+</div>

@@ -1,0 +1,18 @@
+<!-- templates/components/custom_fields.html -->
+
+<div class="custom-fields-section">
+    <h2>Additional Information</h2>
+    <ul>
+        {% for field_name, field_value in custom_fields.items() %}
+            <li><strong>{{ field_name|humanize }}:</strong> 
+                {% if field_value is iterable and field_value is not string %}
+                    {% for item in field_value %}
+                        {{ item }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {{ field_value }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>

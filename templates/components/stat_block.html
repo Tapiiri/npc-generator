@@ -1,0 +1,24 @@
+<!-- templates/components/stat_block.html -->
+
+{% from "components/macros.html" import render_ability, render_stat, render_special_ability %}
+
+<div class="stat-block">
+    <h2>{{ stat_block.title }}</h2>
+    <ul class="abilities-list">
+        {% for ability_name, ability_value in stat_block.abilities.items() %}
+            {{ render_ability(ability_name, ability_value) }}
+        {% endfor %}
+    </ul>
+    <ul class="stats-list">
+        {{ render_stat("Armor Class", stat_block.armor_class) }}
+        {{ render_stat("Hit Points", stat_block.hit_points) }}
+        {{ render_stat("Speed", stat_block.speed) }}
+        <!-- Add other stats as needed -->
+    </ul>
+    {% if stat_block.special_abilities %}
+        <h3>Special Abilities</h3>
+        {% for ability in stat_block.special_abilities %}
+            {{ render_special_ability(ability) }}
+        {% endfor %}
+    {% endif %}
+</div>

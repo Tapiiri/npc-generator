@@ -1,0 +1,47 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+.attributes-section, .stat-block, .custom-fields-section, .metadata-section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.abilities-list, .stats-list, .custom-fields-section ul, .metadata-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.abilities-list li, .stats-list li, .custom-fields-section li, .metadata-section li {
+    margin: 5px 0;
+}
+
+.special-ability {
+    margin: 10px 0;
+}
+
+.special-ability ul {
+    list-style-type: none;
+    padding-left: 15px;
+}
+
+.special-ability li {
+    font-size: 0.9em;
+}
+
+ul ul {
+    padding-left: 20px;
+}
