@@ -9,6 +9,7 @@
     "attributes": {
       "name": "Arlyn the Veiled",
       "role": "Master of Magical Concealment",
+      "portrait": "images/Arlyn_Portrait.webp",
       "appearance": "A middle-aged elf with piercing green eyes and long, silver hair. She wears dark robes adorned with arcane symbols.",
       "race": "Elf",
       "class": "Wizard",

@@ -45,3 +45,23 @@ h1, h2, h3 {
 ul ul {
     padding-left: 20px;
 }
+
+.attributes-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.portrait {
+    margin-right: 20px;
+}
+
+.portrait img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.attributes-details {
+    flex: 1;
+}

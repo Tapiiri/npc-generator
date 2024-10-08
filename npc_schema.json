@@ -31,7 +31,8 @@
               "additional_info": {
                 "type": "object",
                 "additionalProperties": { "type": ["string", "number", "object", "array"] }
-              }
+              },
+              "portrait": { "type": "string", "format": "uri" } 
             },
             "required": ["name"],
             "additionalProperties": true

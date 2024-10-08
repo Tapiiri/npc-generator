@@ -20,7 +20,7 @@ class OutputGenerator:
             logging.info(f"Copied stylesheet to {stylesheet_destination}")
         except Exception as e:
             logging.error(f"Error copying stylesheet: {e}")
-            
+
     def generate_outputs(self, npc_data_list):
         output_files = []
         for npc_data in npc_data_list:
@@ -39,12 +39,15 @@ class OutputGenerator:
         html_file_path = os.path.join(self.output_directory, f"{name}.html")
         pdf_file_path = os.path.join(self.output_directory, f"{name}.pdf")
 
+        # Set base_url to the project root directory
+        base_url = self.template_renderer.template_dir7
+
         try:
             with open(html_file_path, "w", encoding="utf-8") as file:
                 file.write(html_content)
             logging.info(f"Generated HTML file at {html_file_path}")
 
-            HTML(string=html_content, base_url=self.output_directory).write_pdf(pdf_file_path)
+            HTML(string=html_content, base_url=base_url).write_pdf(pdf_file_path)
             logging.info(f"Generated PDF file at {pdf_file_path}")
             return pdf_file_path
         except Exception as e:
