@@ -1,78 +1,290 @@
-/* styles.css */
+/* Enhanced styles.css */
 
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-}
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Roboto&display=swap');
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-h1, h2, h3 {
-    color: #2c3e50;
-}
-
-.attributes-section, .stat-block, .custom-fields-section, .metadata-section {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.abilities-list, .stats-list, .custom-fields-section ul, .metadata-section ul {
-    list-style-type: none;
+/* Resetting default margins and paddings */
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.abilities-list li, .stats-list li, .custom-fields-section li, .metadata-section li {
-    margin: 5px 0;
+/* Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: url('images/paper_cropped.png') center center fixed;
+    background-size: cover;
+    color: #2c3e50;
+    padding: 20px;
 }
 
-.special-ability {
-    margin: 10px 0;
+/* Container Styling */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.special-ability ul {
-    list-style-type: none;
-    padding-left: 15px;
+/* Headings Styling */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a2f1a;
+    text-shadow: 1px 1px 2px #ccc;
 }
 
-.special-ability li {
-    font-size: 0.9em;
+h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    color: #4a2f1a;
+    border-bottom: 2px solid #4a2f1a;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-ul ul {
-    padding-left: 20px;
+h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5em;
+    color: #4a2f1a;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Attributes Section */
+.attributes-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 .attributes-container {
     display: flex;
-    align-items: flex-start;
+    width: 100%;
 }
 
 .portrait {
+    flex: 1;
     margin-right: 20px;
 }
 
 .portrait img {
-    max-width: 200px;
+    max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
+    border: 3px solid #4a2f1a;
 }
 
 .attributes-details {
-    flex: 1;
+    flex: 2;
 }
 
+.attributes-details p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Icon Styling */
 .icon {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     vertical-align: middle;
+    margin: 0 5px;
 }
 
 .missing-icon {
     color: red;
     font-style: italic;
+}
+
+/* Stat Block Styling */
+.stat-block {
+    background: #fdfaf4;
+    border: 2px solid #4a2f1a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-block ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.abilities-list, .stats-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.abilities-list li, .stats-list li {
+    flex: 1 1 30%;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.special-ability {
+    background: #fff8e1;
+    border-left: 5px solid #4a2f1a;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.special-ability strong {
+    font-family: 'Cinzel', serif;
+    color: #4a2f1a;
+}
+
+.special-ability ul {
+    margin-top: 10px;
+}
+
+.special-ability li {
+    font-size: 0.95em;
+}
+
+/* Custom Fields Section */
+.custom-fields-section {
+    background: #fdfaf4;
+    border: 2px solid #4a2f1a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.custom-fields-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.custom-fields-section li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Additional Styling */
+ul ul {
+    padding-left: 20px;
+}
+
+a {
+    color: #4a2f1a;
+    text-decoration: none;
+    border-bottom: 1px dotted #4a2f1a;
+}
+
+a:hover {
+    color: #2c3e50;
+    border-bottom: 1px solid #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .attributes-container {
+        flex-direction: column;
+    }
+
+    .portrait {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .abilities-list li, .stats-list li {
+        flex: 1 1 45%;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: none;
+        color: #000;
+        -webkit-print-color-adjust: exact; /* Ensures colors are printed accurately */
+        print-color-adjust: exact;
+    }
+
+    .container {
+        box-shadow: none;
+        background: none;
+        padding: 0;
+    }
+
+    /* Remove any unnecessary margins */
+    h1, h2, h3 {
+        margin-top: 0;
+    }
+
+    /* Adjust the attributes container for printing */
+    .attributes-container {
+        display: block; /* Changes from flex to block layout */
+        page-break-inside: avoid; /* Prevents page break inside this element */
+        break-inside: avoid; /* For better browser compatibility */
+    }
+
+    .portrait {
+        margin: 0 auto 20px auto;
+        text-align: center;
+    }
+
+    .portrait img {
+        max-width: 300px; /* Set a fixed maximum width */
+        width: 100%;
+        height: auto;
+    }
+
+    .attributes-details {
+        width: 100%;
+    }
+
+    /* Adjust lists for printing */
+    .abilities-list, .stats-list {
+        display: block;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .abilities-list li, .stats-list li {
+        width: 100%;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Ensure images are not stretched */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Remove text shadows for print clarity */
+    h1, h2, h3 {
+        text-shadow: none;
+    }
+
+    /* Adjust padding and margins */
+    .stat-block, .custom-fields-section {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 0;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .special-ability {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-left-width: 3px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    /* Prevent page breaks inside list items and paragraphs */
+    li, p {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
 }
