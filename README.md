@@ -1,6 +1,6 @@
 # NPC Generator
 
-_ReadMe Generated with ChatGPT-o1 - except AI funkiness!_
+_ReadMe Generated with ChatGPT-o1 - expect AI funkiness!_
 ## Overview
 
 The **NPC Generator** is a Python-based tool designed to create detailed PDF character sheets for Non-Player Characters (NPCs) in role-playing games like Dungeons & Dragons. It leverages a flexible data model defined in JSON, modular HTML templates with Jinja2 templating, and WeasyPrint for PDF generation. The system is built to be extensible, allowing for easy customization of data fields, templates, and layouts.
